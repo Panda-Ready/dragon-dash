@@ -3,6 +3,7 @@ namespace SpriteKind {
     export const EnemyProjectile = SpriteKind.create()
     export const Heart = SpriteKind.create()
     export const Hurt = SpriteKind.create()
+    export const Spike = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.HealthyFood, function (sprite, otherSprite) {
     sprites.destroy(otherSprite, effects.fountain, 100)
@@ -139,7 +140,7 @@ function make_food (count: number, col: number, row: number) {
     } else {
         ToxicSpider = sprites.create(assets.image`15 by 0`, SpriteKind.Enemy)
         tiles.placeOnTile(ToxicSpider, tiles.getTileLocation(col, row - randint(1, 3)))
-        Spike = sprites.create(assets.image`spike2`, SpriteKind.Enemy)
+        Spike = sprites.create(assets.image`spike2`, SpriteKind.Spike)
         tiles.placeOnTile(Spike, tiles.getTileLocation(col - randint(-3, 3), row))
     }
 }
