@@ -62,6 +62,11 @@ function make_moving_spider (col: number, row: number, speed: number) {
     Spider = sprites.createProjectileFromSide(assets.image`15 by 0`, speed, 0)
     tiles.placeOnTile(Spider, tiles.getTileLocation(col, row))
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Spike, function (sprite, otherSprite) {
+    Dragon.sayText("Ouch!!", 200, false)
+    sprites.destroy(otherSprite, effects.fire, 100)
+    info.changeLifeBy(-1)
+})
 function init_welcome_longtext () {
     veryLongText = "Welcome to my Dragon Dash game !!"
     game.showLongText(veryLongText, DialogLayout.Center)
